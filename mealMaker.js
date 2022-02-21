@@ -5,7 +5,8 @@ const menu = {
     desserts: []
  },
  
- /* use getter and setter or not, since we are not manipulating any property
+ /* use getter and setter or not, since we are not manipulating any property, but since our property is prefixed with (_)
+ which means we cannot change this properties, we can only access them using getters
  get appetizers() {
     return this._courses.appetizers;
  },
