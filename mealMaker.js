@@ -4,9 +4,10 @@ const menu = {
     mains: [],
     desserts: []
  },
+ /*/* we use the getter to fetch/target/access the properties in the object and use the setter to set the values as same value since we are not changing/mutating the values in the properties.
+*/
+
  
- /* use getter and setter or not, since we are not manipulating any property, but since our property is prefixed with (_)
- which means we cannot change this properties, we can only access them using getters
  get appetizers() {
     return this._courses.appetizers;
  },
@@ -33,7 +34,7 @@ const menu = {
    mains: this.mains,
    deserts: this.desserts
    };
- },*/
+ },
  
  //add a new dish and price
     addDishToCourse(courseName, dishName, dishPrice){
