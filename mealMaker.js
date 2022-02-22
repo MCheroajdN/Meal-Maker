@@ -4,11 +4,15 @@ const menu = {
     mains: [],
     desserts: []
  },
- /*/* we use the getter to fetch/target/access the properties in the object and use the setter to set the values as same value since we are not changing/mutating the values in the properties.
+
+ // accessing the object's property:
+ /* we use the getter to fetch/target/access the internal property of the object  and use the setter to set
+  the values as same value since we are not changing/mutating the values in the properties. And there is 
+  prefix of (_) underscore to the property and we do not want to access this internal private property from outside,
+  hence getters and setters.
 */
 
- 
- get appetizers() {
+  get appetizers() {
     return this._courses.appetizers;
  },
  set appetizers(appetizers) {
@@ -28,6 +32,9 @@ const menu = {
    set desserts(dessert) {
      this._courses.desserts = desserts;
     },
+
+
+ // method to get all the courses
  get courses() {
    return {
    appetizers: this.appetizers,
@@ -36,7 +43,7 @@ const menu = {
    };
  },
  
- //add a new dish and price
+//method with parameters for adding a new dish with the name and price to the empty array of the menu based on courseName
     addDishToCourse(courseName, dishName, dishPrice){
       const dish = {
          name: dishName,
@@ -45,14 +52,14 @@ const menu = {
       return this._courses[courseName].push(dish);
     },
  
- //on the menu, get a random dish from the course
+ //method for getting a random dish from a course on the menu to generate random meal
  getRandomDishFromCourse (courseName) {
    const dishes = this._courses[courseName];
    const randomIndex = Math.floor(Math.random() * dishes.length);
    return dishes[randomIndex];
  }, 
  
- //generate a random meal
+ //method to generate a random meal
  generateRandomMeal() {
   const appetizer = this.getRandomDishFromCourse('appetizers');
   const main = this.getRandomDishFromCourse('mains');
@@ -62,21 +69,25 @@ const menu = {
   return ` You ordered ${appetizer.name}, ${main.name}, ${dessert.name}. Your bill is ${totalPrice}.`;
  }
  };
- //appertizers
+
+ //providing arguments/data to pass into the parameters
+
+ //appertizers arguments
  menu.addDishToCourse('appetizers', 'Prawn Salad', 3.20);
  menu.addDishToCourse('appetizers', 'Scampi Fries', 3.90);
  menu.addDishToCourse('appetizers', 'ribs', 3.70);
  
- //mains
+ //mains arguments
  menu.addDishToCourse('mains', 'Jollof Rice', 6.50);
  menu.addDishToCourse('mains', 'Fried Rice', 6.80);
  menu.addDishToCourse('mains', 'Pilarf Rice', 7.50);
  
- //desserts
+ //desserts arguments
  menu.addDishToCourse('desserts', 'Chocolate Ice Cream', 4.52);
  menu.addDishToCourse('desserts', 'Hagendaz', 5.10);
  menu.addDishToCourse('desserts', 'Cheese Cake', 6.25);
  
+ //generating a meal and saving to a variable
  let meal = menu.generateRandomMeal();
  console.log(meal);   
       
